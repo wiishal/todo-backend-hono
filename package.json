@@ -1,0 +1,21 @@
+{
+  "name": "backend-todo",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy --minify"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.3.1",
+    "@prisma/extension-accelerate": "^1.2.1",
+    "dotenv": "^16.4.7",
+    "hono": "^4.6.20",
+    "mongoose": "^8.9.7",
+    "prisma": "^6.3.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250109.0",
+    "@types/mongoose": "^5.11.97",
+    "wrangler": "^3.101.0"
+  }
+}
