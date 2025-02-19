@@ -12,11 +12,11 @@ const authRoute = new Hono<{
 authRoute.post("/login", async(c)=>{
     const body:userCredentials = await c.req.json();
     const isUserExist = await checkUser(c,body.username)
-    if(isUserExist && isUserExist.password == body.password){
-      const token = await signJWT(c,isUserExist.username,isUserExist.id)
+    if(isUserExist && isUserExist.user?.password == body.password){
+      const token = await signJWT(c,isUserExist.user.username,isUserExist.user.id)
       if(token){
         c.status(200)
-        return c.json({message:"login successful",user:isUserExist.username, token:token})
+        return c.json({message:"login successful",user:isUserExist.user.username, token:token})
       }
     }
     c.status(403)
@@ -26,13 +26,16 @@ authRoute.post("/login", async(c)=>{
 authRoute.post("/signup",async(c)=>{
 
   const body:userCredentials = await c.req.json();
+  console.log("signup :",body)
   const isUserNameAlreadyExist = await checkUser(c,body.username)
-
-  if(isUserNameAlreadyExist){
-    c.status(403)
-    return c.json({message:"username already exist"})
+  if(!isUserNameAlreadyExist) {
+    c.status(404);
+    return c.json({message:"failed to sign in "})
+  } 
+  if(isUserNameAlreadyExist.status === true){
+      c.status(403)
+      return c.json({message:"username already exist"})
   }
-
   const createdUser = await createUser(c,body)
 
   if(createdUser){

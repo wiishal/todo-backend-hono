@@ -12,7 +12,10 @@ export const checkUser = async (c: any,user_name:string)=>{
       },
     });
 
-     return user || false;
+     if(user){
+      return {status:true,user}
+     }
+     return {status:false}
 
   } catch (error) {
     console.log("error while checking creadential")
