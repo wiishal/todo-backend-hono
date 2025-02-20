@@ -15,7 +15,7 @@ A **lightweight, high-performance** Todo backend built using **Hono, TypeScript,
 - **Backend:** Hono, TypeScript, Node.js  
 - **Database:** Prisma ORM, PostgreSQL  
 - **Authentication:** JWT, bcrypt  
-- **Deployment:** Docker, Cloudflare Workers (if used)  
+- **Deployment:** Cloudflare Workers
 
 ## 🚀 Installation & Setup  
 
