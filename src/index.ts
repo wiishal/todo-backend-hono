@@ -16,10 +16,10 @@ const app = new Hono<{
 app.use(
   "/*",
   cors({
-    origin: "*", 
+    origin: "https://todo-six-zeta-27.vercel.app",
     allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowHeaders: ["Content-Type", "Authorization"],
-    credentials: true, 
+    credentials: true,
   })
 );
 app.use("/api/v1/task/*", tokenVerify);
@@ -33,8 +33,5 @@ app.route("api/v1/userStr",userStr)
 
 
 
-// app.get("/", async (c) => {
-//   //   const prisma = getPrisma(c.env.DATABASE_URL);
-//   return c.json({ message: "did it" });
-// });
+
 export default app
